@@ -43,7 +43,7 @@ def readblob( alias_in  , pw_in , alias='default' ):
     with open( blobpath , "rb") as fIn:  # decrypt #
         fOut = io.BytesIO()                        #
         encFileSize = stat( blobpath ).st_size     #
-        print(' attempt rxrx:', len(str(pw_in)) )  #
+        print(' attempt rxrx:', len(str(pw_in)) , 'blobpath:',blobpath , pw_in[:2])  #
         crypsav.decryptStream(fIn, fOut, pw_in , bufferSize, encFileSize)
         data_cluster = yaml.load( fOut.getvalue() , Loader=yaml.FullLoader )
         #credential_node = data_cluster    #['operators'][0]['credentials']
