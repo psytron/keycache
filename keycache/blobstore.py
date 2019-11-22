@@ -22,7 +22,7 @@ def generate( alias_in , pass_in ):
 
 
 
-def writeblob( alias_in ,  pw_in, obj_in , alias='default'):
+def writeblob( alias_in, pw_in, obj_in ):
     bufferSize = 64 * 1024 # 64K
     blobpath = 'vm/'+alias_in
     with open( blobpath , "wb") as fOut:
@@ -45,11 +45,10 @@ def readblob( alias_in  , pw_in , alias='default' ):
         data_cluster = yaml.load( fOut.getvalue() , Loader=yaml.FullLoader )
         #credential_node = data_cluster    #['operators'][0]['credentials']
         aliases[alias_in]={}
-
         # WRITE ALL PROPERTIES INSIDE CLUSTER NAMED BY DOMAIN
-        for cred in data_cluster:
-            aliases[alias_in][ cred['domain'] ]= cred
-            if 'key' in cred:
-                cred['apiKey']=cred['key']
+        #for cred in data_cluster:
+        #    aliases[alias_in][ cred['domain'] ]= cred
+        #    if 'key' in cred:
+        #        cred['apiKey']=cred['key']
         fOut.close()
-    return aliases[ alias_in ]
+    return data_cluster

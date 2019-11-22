@@ -56,11 +56,16 @@ def get( domain ):
         if domain in aliases[ alias ]:
             return aliases[ alias ][ domain ]
         else:
-            print(' No Credential for this domain on this alias ')
+            print(' No Credential for this domain on this alias. ')
 
-def get_all( alias=default_alias ):
+def get_all( alias=default_alias , priv=default_pass ):
     global aliases
-    return aliases[ alias ]
+    if alias in aliases:
+        return aliases[ alias ]
+    else:
+        aliases[ alias ]= blobstore.readblob( alias , default_pass )
+        return  aliases[ alias ]
+
 
 
 
