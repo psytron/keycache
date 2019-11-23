@@ -19,6 +19,13 @@ def generate( alias_in , pass_in ):
             crypsav.encryptStream(fIn, fOut, pass_in , bufferSize ) # encryption/decryption
             print('Success')
 
+def load_config( alias_in ):
+    ipath='vm/cache/'+alias_in+'.yml'
+    with open( ipath , "rb") as fIn:
+        config_list = yaml.load(fIn, Loader=yaml.FullLoader)
+        print('Read Config Success')
+    config_dict = { x['domain']:x for x in config_list }
+    return config_dict
 
 
 
