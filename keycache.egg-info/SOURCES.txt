@@ -3,7 +3,7 @@ README.md
 setup.py
 keycache/__init__.py
 keycache/blobstore.py
-keycache/creds.py
+keycache/keycache.py
 keycache.egg-info/PKG-INFO
 keycache.egg-info/SOURCES.txt
 keycache.egg-info/dependency_links.txt

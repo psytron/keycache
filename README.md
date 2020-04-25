@@ -1,5 +1,5 @@
 ### Keycache
-Keycache is an encrypted key value store for your sensitive credentials
+Keycache is an encrypted key value store for your sensitive credentials.
 
 
 Install:
