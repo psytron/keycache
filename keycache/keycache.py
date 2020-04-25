@@ -10,7 +10,7 @@ class Keycache:
         if not os.path.exists('vm'):
             os.mkdir('vm')
         self.default_alias=kwargs.get('alias','default')
-        self.default_pass=kwargs.get('priv','default')
+        self.default_pass=kwargs.get('private_key','default')
         self.default_path=kwargs.get('path','vm/cache/')
         self.creds = {}
 
@@ -33,8 +33,8 @@ class Keycache:
         self.creds = blobstore.load_config( blob_path )
 
 
-    def add(self , domain ,  kvs_in):
-        self.creds[domain]=kvs_in
+    def add(self , namespace ,  kvs_in ):
+        self.creds[ namespace ]=kvs_in
     def add_all(self , blob_dict ):
         for b in blob_dict:
             print( b )
