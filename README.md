@@ -7,6 +7,7 @@ Install:
     pip install git+git@github.com:psytron/keycache.git#egg=keycache
 
 Simple Usage:
+    
     import keycache
     keycache.add('name_space', {'key1':'val1'} )
     keycache.save()
