@@ -10,7 +10,7 @@ Install:
 
 Usage:
     
-    from keycache.keycache import Keycache
+    from keycache import Keycache
       
     k1 = Keycache( 
         alias='api_workers',                        # Blob namespace
