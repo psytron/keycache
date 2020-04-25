@@ -10,9 +10,20 @@
 #   print(' next level ')
 
 
+#NSTANCE OF CREDS for STATIC LOCAL USE: 
+from .keycache import Keycache
+inst = Keycache( alias='default' , priv='default' )
+set_pass = inst.set_pass
+get = inst.get
+generate= inst.generate
+
+
+
+
+
+
+'''
 aliases = {}
-
-
 from . import blobstore
 import os
 
@@ -31,7 +42,9 @@ def set_pass( pass_in ):
     default_pass=pass_in
 
 def generate( pubkey='default' , privkey='default'):
-    print( 'generate()' )
+    """Generates encrypted blob on disk
+        pubkey String: incoming public key
+        privkey String: incoming private key"""
     blobstore.generate( pubkey , privkey )
 
 def get( domain ):
@@ -78,10 +91,8 @@ def set( domain , obj ):
     # and writes file and saves and then returns unencrypted keyval based on provided passphrase
 
 
-def append( k, s, v, p, obj):
-    pass
 
 
 
 
-
+'''

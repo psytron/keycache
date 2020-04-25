@@ -3,7 +3,7 @@ from . import blobstore
 import os
 
 
-class Creds:
+class Keycache:
 
     def __init__(self , *args, **kwargs):
         print('New Key Cache instance')
@@ -11,22 +11,33 @@ class Creds:
             os.mkdir('vm')
         self.default_alias=kwargs.get('alias','default')
         self.default_pass=kwargs.get('priv','default')
+        self.default_path=kwargs.get('path','vm/cache/')
         self.creds = {}
 
 
     def generate( self,  pubkey='default' , privkey='default'):
-        print( 'generate()' )
+        """Generates encrypted blob on disk
+        pubkey String: incoming public key
+        privkey String: incoming private key"""
         self.creds = blobstore.generate( pubkey , privkey )
 
-    def add(self , domain ,  blob_in):
-        self.creds[domain]=blob_in
+    def set_alias( self, alias_in ):
+        self.default_alias=alias_in
+    def set_pass( self , pass_in ):
+        self.default_pass=pass_in
+    def set_path( self, path_in ):
+        self.conf_path = path_in
+    
+    def load_config(self):
+        blob_path = self.default_path+'/'+self.default_alias+'.yml'
+        self.creds = blobstore.load_config( blob_path )
 
+
+    def add(self , domain ,  kvs_in):
+        self.creds[domain]=kvs_in
     def add_all(self , blob_dict ):
         for b in blob_dict:
             print( b )
-
-    def load_config(self):
-        self.creds = blobstore.load_config( self.default_alias )
 
 
     def load_blob(self):
@@ -40,14 +51,13 @@ class Creds:
         if( domain in self.creds ):
             return self.creds[ domain ]
         else:
-            #pxpx = docsec.get('dxdx', default='NONE' , alias=alias )
             self.creds = blobstore.readblob( self.default_alias , self.default_pass )
             if domain in self.creds:
                 return self.creds[ domain ]
             else:
                 print(' No Credential for this domain on this alias. ')
 
-    def get_all(self):
+    def get_all( self ):
         if self.creds:
             return self.creds
         else:
