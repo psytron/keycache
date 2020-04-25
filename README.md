@@ -4,7 +4,7 @@ Keycache is an encrypted key value store for your sensitive credentials
 
 Install:
     
-    pip install git+git@github.com:psytron/keycache.git#egg=keycache
+    pip install git+git://github.com/psytron/keycache.git#egg=keycache
 
 Simple Usage:
     
