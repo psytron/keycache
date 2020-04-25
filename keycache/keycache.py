@@ -7,7 +7,7 @@ import os
 class Keycache:
 
     def __init__(self , *args, **kwargs):
-        print('New Key Cache instance')
+        print('New Keycache')
         if not os.path.exists('vm'):
             os.mkdir('vm')
         self.default_alias=kwargs.get('alias','default')
