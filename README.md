@@ -1,14 +1,18 @@
 ### Keycache
-Keycache is encrypted key:value store for your sensitive credentials
+Keycache is an encrypted key value store for your sensitive credentials
 
 
 Install:
     
     pip install git+git@github.com:psytron/keycache.git#egg=keycache
 
+Simple Usage:
+    import keycache
+    keycache.add('name_space', {'key1':'val1'} )
+    keycache.save()
 
 
-Usage:
+Multi Usage:
     
     from keycache import Keycache
       
