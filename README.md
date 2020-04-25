@@ -13,13 +13,11 @@ Usage:
     from keycache.keycache import Keycache
       
     k1 = Keycache( 
-        alias='some_namespace' , 
-        private_key='pull_this_from_secure_message_bus' , 
-        path='vm/cache' )
+        alias='api_workers',                        # Blob namespace
+        private_key='key_from_secure_message_bus',  # Encryption key
+        config_path='config/my_secrets.yml' ,       # File with API Keys
+        blobs_path='blobs/dir' )                    # Where to store encrypted blobs
     
-    # ADD VALUES 
     k1.add('some_namespace' , { 'key1':'val1' , 'key2':'val2'} )
-    
-    # SAVE TO DISK 
     k1.save() 
 
