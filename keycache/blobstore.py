@@ -6,8 +6,6 @@ import pyAesCrypt as crypsav
 
 
 
-aliases = {}
-
 
 # need to convert private key config to blob
 # need  alias_in , pass_in
@@ -19,27 +17,11 @@ def generate( alias_in , pass_in ):
             crypsav.encryptStream(fIn, fOut, pass_in , bufferSize ) # encryption/decryption
             print('Success')
 
-def load_config_OG( alias_in ):
-    ipath='vm/cache/'+alias_in+'.yml'
-    with open( ipath , "rb") as fIn:
-        config_list = yaml.load(fIn, Loader=yaml.FullLoader)
-        print('Read Config Success')
-    config_dict = { x['domain']:x for x in config_list }
-    return config_dict
-
-def load_config( path_in ):
-    ipath=path_in
-    with open( ipath , "rb") as fIn:
-        config_list = yaml.load(fIn, Loader=yaml.FullLoader)
-        print('Read Config Success')
-    config_dict = { x['domain']:x for x in config_list }
-    return config_dict    
 
 
-
-def writeblob( alias_in, pw_in, obj_in ):
+def writeblob( alias_in, pw_in, obj_in , save_path ):
     bufferSize = 64 * 1024 # 64K
-    blobpath = 'vm/'+alias_in
+    blobpath = save_path+'/'+alias_in
     with open( blobpath , "wb") as fOut:
         fIn = io.BytesIO( yaml.dump( obj_in ).encode('utf8') )
         crypsav.encryptStream(fIn, fOut, pw_in , bufferSize ) # encryption/decryption
@@ -48,10 +30,9 @@ def writeblob( alias_in, pw_in, obj_in ):
 
 
 
-
-def readblob( alias_in  , pw_in , alias='default' ):
+def readblob( alias_in  , pw_in , alias='default' , save_path='vm' ):
     bufferSize = 64 * 1024 # 64K
-    blobpath = 'vm/' + alias_in
+    blobpath = save_path+'/' + alias_in
     try:
         with open( blobpath , "rb") as fIn:  # decrypt #
             fOut = io.BytesIO()                        #
@@ -60,7 +41,7 @@ def readblob( alias_in  , pw_in , alias='default' ):
             crypsav.decryptStream(fIn, fOut, pw_in , bufferSize, encFileSize)
             data_cluster = yaml.load( fOut.getvalue() , Loader=yaml.FullLoader )
             #credential_node = data_cluster    #['operators'][0]['credentials']
-            aliases[alias_in]={}
+            #aliases[alias_in]={}
             # WRITE ALL PROPERTIES INSIDE CLUSTER NAMED BY DOMAIN
             #for cred in data_cluster:
             #    aliases[alias_in][ cred['domain'] ]= cred

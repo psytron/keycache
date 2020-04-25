@@ -1,4 +1,5 @@
 
+import io, json, yaml
 from . import blobstore
 import os
 
@@ -11,7 +12,8 @@ class Keycache:
             os.mkdir('vm')
         self.default_alias=kwargs.get('alias','default')
         self.default_pass=kwargs.get('private_key','default')
-        self.default_path=kwargs.get('path','vm/cache/')
+        self.config_path=kwargs.get('config_path','vm/cache')
+        self.blob_path=kwargs.get('blob_path','vm')
         self.creds = {}
 
 
@@ -28,9 +30,17 @@ class Keycache:
     def set_path( self, path_in ):
         self.conf_path = path_in
     
-    def load_config(self):
-        blob_path = self.default_path+'/'+self.default_alias+'.yml'
-        self.creds = blobstore.load_config( blob_path )
+
+    def load_config( self, path_in=False ):
+        if path_in:
+            self.config_path = path_in
+        ipath = self.config_path +'/'+self.default_alias+'.yml'
+        with open( ipath , "rb") as fIn:
+            config_list = yaml.load(fIn, Loader=yaml.FullLoader)
+            print('Read Config Success')
+        config_dict = { x['domain']:x for x in config_list }
+        self.creds = config_dict
+
 
 
     def add(self , namespace ,  kvs_in ):
@@ -44,7 +54,7 @@ class Keycache:
         self.creds = blobstore.readblob( self.default_alias , self.default_pass )
 
     def save(self):
-        blobstore.writeblob( self.default_alias , self.default_pass , self.creds )
+        blobstore.writeblob( self.default_alias , self.default_pass , self.creds , self.blob_path )
 
 
     def get( self, domain ):
