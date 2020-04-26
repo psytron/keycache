@@ -7,7 +7,7 @@ import os
 class Keycache:
 
     def __init__(self , *args, **kwargs):
-        print('New Keycache')
+        print('New Keycache. ')
         self.default_alias=kwargs.get('alias','default')
         self.default_pass=kwargs.get('private_key','default')
         self.config_path=kwargs.get('config_path','vm/cache')

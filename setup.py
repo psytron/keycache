@@ -7,8 +7,9 @@ setup(
     author_email='m@psytron.com',
     packages=['keycache'], # Needed to actually package
     install_requires=['pyAesCrypt','cryptography','pyyaml'],# Needed for dependencies
-    version='0.22',
-    license='PSYTRON', # Can be anything
-    description='KeyCache stores the blobs.'
-    # long_description=open('README.txt').read(), # Readme eventually (there will be a warning)
+    version='0.23',
+    license='Apache 2.0', # Can be anything
+    description='Keycache is an AES encrypted keyvalue store for sensitive credentials.',
+    long_description=open('README.md').read(),
+    long_description_content_type='text/markdown'
 )
