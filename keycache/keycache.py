@@ -22,7 +22,7 @@ class Keycache:
         """Generates encrypted blob on disk
         pubkey String: incoming public key
         privkey String: incoming private key"""
-        self.creds = blobstore.generate( pubkey , privkey )
+        blobstore.generate( pubkey , privkey )
 
     def set_alias( self, alias_in ):
         self.default_alias=alias_in

@@ -1,5 +1,5 @@
 ### Keycache
-Keycache is an encrypted key value store for your sensitive credentials.
+Keycache is an encrypted key value store for your sensitive credentials. It can be used for database passwords, API keys, private certificates or anything you don't want floating around on your server filesystem. The module works as both static and class instance model. 
 
 
 Install:
