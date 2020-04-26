@@ -8,12 +8,13 @@ class Keycache:
 
     def __init__(self , *args, **kwargs):
         print('New Keycache')
-        if not os.path.exists('vm'):
-            os.mkdir('vm')
         self.default_alias=kwargs.get('alias','default')
         self.default_pass=kwargs.get('private_key','default')
         self.config_path=kwargs.get('config_path','vm/cache')
         self.blob_path=kwargs.get('blob_path','vm')
+        # IS THIS REALLY NECESSARY HERE TO MAKE DIR ? 
+        if not os.path.exists('vm'): # self.blob_path 
+            os.mkdir('vm')
         self.creds = {}
 
 
@@ -65,7 +66,7 @@ class Keycache:
             if domain in self.creds:
                 return self.creds[ domain ]
             else:
-                print(' No Credential for this domain on this alias. ')
+                print('No Cred:',domain,'-->',self.default_alias)
 
     def get_all( self ):
         if self.creds:

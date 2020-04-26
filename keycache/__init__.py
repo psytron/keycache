@@ -9,7 +9,7 @@
 # def set( self , 'level_0' , 'level_1'):
 #   print(' next level ')
 
-print( ' RUNNING KEYCACHE FROM SRC in venv37 yo')
+
 #NSTANCE OF CREDS for STATIC LOCAL USE: 
 from .keycache import Keycache
 inst = Keycache( alias='default' , priv='default' )
