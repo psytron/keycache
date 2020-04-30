@@ -3,8 +3,9 @@ Keycache is an AES encrypted key:value store for your sensitive credentials. It 
 
 
 Install:
-    
-    pip install git+git://github.com/psytron/keycache.git#egg=keycache
+```bash    
+pip install git+git://github.com/psytron/keycache.git#egg=keycache
+```
 
 Simple Usage:
 ```python
