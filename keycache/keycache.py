@@ -18,6 +18,8 @@ class Keycache():
         if not os.path.exists('vm'): # self.blob_path 
             os.mkdir('vm')
         self.creds = {}
+    def version( self , *args, **kwargs ):
+        return '0.25.3'
 
     def __getattr_TRYTHISTOOBJECTWRAP__( self, prop_str_in ):
         print( prop_str_in )
