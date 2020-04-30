@@ -9,7 +9,7 @@
 # def set( self , 'level_0' , 'level_1'):
 #   print(' next level ')
 
-
+print('Keycache 0.25.1')
 #NSTANCE OF CREDS for STATIC LOCAL USE: 
 from .keycache import Keycache
 inst = Keycache( alias='default' , priv='default' )
