@@ -3,9 +3,11 @@ import io, json, yaml
 from . import blobstore
 import os
 
+#import enum
+#enum.Enum 
 
-class Keycache:
-
+class Keycache():
+    
     def __init__(self , *args, **kwargs):
         print('New Keycache. ')
         self.default_alias=kwargs.get('alias','default')
@@ -17,6 +19,9 @@ class Keycache:
             os.mkdir('vm')
         self.creds = {}
 
+    def __getattr_TRYTHISTOOBJECTWRAP__( self, prop_str_in ):
+        print( prop_str_in )
+        return prop_str_in
 
     def generate( self,  pubkey='default' , privkey='default'):
         """Generates encrypted blob on disk
