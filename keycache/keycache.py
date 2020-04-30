@@ -19,7 +19,7 @@ class Keycache():
             os.mkdir('vm')
         self.creds = {}
     def version( self , *args, **kwargs ):
-        return '0.25.3'
+        return '0.25.4'
 
     def __getattr_TRYTHISTOOBJECTWRAP__( self, prop_str_in ):
         print( prop_str_in )
