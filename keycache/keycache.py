@@ -1,6 +1,7 @@
 
 import io, json, yaml
 from . import blobstore
+from . import util
 import os
 
 #import enum
@@ -11,13 +12,18 @@ class Keycache():
     def __init__(self , *args, **kwargs):
         print('New Keycache. ')
         self.default_alias=kwargs.get('alias','default')
-        self.default_pass=kwargs.get('private_key','default')
+        self.default_pass=kwargs.get('private_key', util.basic() )
         self.config_path=kwargs.get('config_path','vm/cache')
         self.blob_path=kwargs.get('blob_path','vm')
-        # IS THIS REALLY NECESSARY HERE TO MAKE DIR ? 
-        if not os.path.exists('vm'): # self.blob_path 
-            os.mkdir('vm')
         self.creds = {}
+        # IS THIS REALLY NECESSARY HERE TO MAKE DIR ? 
+        if not os.path.exists( self.blob_path ): # self.blob_path 
+            os.mkdir( self.blob_path )
+        # HERE should check existing file 
+        if os.path.exists( os.path.join( self.blob_path,self.default_alias ) ):
+            self.load_blob()
+    
+    
     def version( self , *args, **kwargs ):
         return '0.25.4'
 

@@ -30,9 +30,9 @@ def writeblob( alias_in, pw_in, obj_in , save_path ):
 
 
 
-def readblob( alias_in  , pw_in , alias='default' , save_path='vm' ):
+def readblob( alias_in  , pw_in , alias='default' , blob_path='vm' ):
     bufferSize = 64 * 1024 # 64K
-    blobpath = save_path+'/' + alias_in
+    blobpath = blob_path+'/'+alias_in
     try:
         with open( blobpath , "rb") as fIn:  # decrypt #
             fOut = io.BytesIO()                        #
