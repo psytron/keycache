@@ -18,7 +18,7 @@ class Keycache():
         self.creds = {}
         # IS THIS REALLY NECESSARY HERE TO MAKE DIR ? 
         if not os.path.exists( self.blob_path ): # self.blob_path 
-            os.mkdir( self.blob_path )
+            os.makedirs( self.blob_path )
         # HERE should check existing file 
         if os.path.exists( os.path.join( self.blob_path,self.default_alias ) ):
             self.load_blob()
