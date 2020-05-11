@@ -27,3 +27,12 @@ k2.add('some_namespace' , { 'key1':'val1' , 'key2':'val2'} )
 k2.save() 
 ```
 
+
+<b>Loading from file: </b> If you want to distribute the credentials to other machines while keeping a central configuration file on your local host you can use this method. Just ensure you keep your credentials file out of your repository and deploy directory.
+
+```python
+k3 = Keycache()
+k3.load_config('path/to/config.yml')
+k3.save() 
+```
+
