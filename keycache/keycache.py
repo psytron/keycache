@@ -24,7 +24,7 @@ class Keycache():
     
     
     def version( self , *args, **kwargs ):
-        return '0.25.4'
+        return '0.25.5'
 
     def __getattr_TRYTHISTOOBJECTWRAP__( self, prop_str_in ):
         print( prop_str_in )
