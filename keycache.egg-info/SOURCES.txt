@@ -4,6 +4,7 @@ setup.py
 keycache/__init__.py
 keycache/blobstore.py
 keycache/keycache.py
+keycache/util.py
 keycache.egg-info/PKG-INFO
 keycache.egg-info/SOURCES.txt
 keycache.egg-info/dependency_links.txt
