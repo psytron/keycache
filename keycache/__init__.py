@@ -10,6 +10,5 @@
 #   print(' next level ')
 
 
-print('Keycache 0.25.1')
 
 from .keycache import Keycache
