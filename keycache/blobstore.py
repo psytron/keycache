@@ -15,7 +15,6 @@ def generate( alias_in , pass_in ):
     with open( ipath , "rb") as fIn:
         with open( 'vm/'+alias_in , "wb") as fOut:
             crypsav.encryptStream(fIn, fOut, pass_in , bufferSize ) # encryption/decryption
-            print('Success')
 
 
 
@@ -25,7 +24,6 @@ def writeblob( alias_in, pw_in, obj_in , save_path ):
     with open( blobpath , "wb") as fOut:
         fIn = io.BytesIO( yaml.dump( obj_in ).encode('utf8') )
         crypsav.encryptStream(fIn, fOut, pw_in , bufferSize ) # encryption/decryption
-        print('Success')
 
 
 
@@ -37,7 +35,6 @@ def readblob( alias_in  , pw_in , alias='default' , blob_path='vm' ):
         with open( blobpath , "rb") as fIn:  # decrypt #
             fOut = io.BytesIO()                        #
             encFileSize = stat( blobpath ).st_size     #
-            #print(' attempt rxrx:', len(str(pw_in)) , 'blobpath:',blobpath , pw_in[:2])  #
             crypsav.decryptStream(fIn, fOut, pw_in , bufferSize, encFileSize)
             data_cluster = yaml.load( fOut.getvalue() , Loader=yaml.FullLoader )
             #credential_node = data_cluster    #['operators'][0]['credentials']
@@ -51,4 +48,5 @@ def readblob( alias_in  , pw_in , alias='default' , blob_path='vm' ):
         return data_cluster
     except Exception as e:
         # no file 
-        print( e )
+
+        print(' Error in readblob ')
