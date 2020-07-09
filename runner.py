@@ -5,33 +5,32 @@ os.getcwd()
 #os.getcwd()
 
 
-import keycache
-from bizutil import docsec
+from keycache import Keycache
+
 
 # channel =
 # keybus('
+k = Keycache( identifier='wow' , private_key='whwo')
 
-keycache.set_pass( docsec.get('default') )
-keycache.set_alias('default')
 
 # WRITE BLOBS TEST:
-keycache.generate( pubkey='default', privkey=docsec.get('default') )
-keycache.generate( pubkey='miccco',  privkey=docsec.get('miccco') )
+#keycache.generate( pubkey='default', privkey=docsec.get('default') )
+#keycache.generate( pubkey='miccco',  privkey=docsec.get('miccco') )
 
-e=keycache.get('coinbasepro')
+#e=keycache.get('coinbasepro')
 # keycache.sec() # default / key
 # keycache.sec( 'miccco')
 #a= keycache.get('coinbasepro')
 
 
-from mesh.models.alias import Alias
+#from mesh.models.alias import Alias
 
 
 # WOW ALIAS
-a = Alias( identifier='default' )
-a.scope()
-keycache.set( 'coinspace' , {'un':'megauser', 'pw':'learnforever'} )
-a = keycache.get( 'coinspace' )
+#a = Alias( identifier='default' )
+#a.scope()
+#keycache.set( 'coinspace' , {'un':'megauser', 'pw':'learnforever'} )
+#a = keycache.get( 'coinspace' )
 
 
 
@@ -40,22 +39,7 @@ a = keycache.get( 'coinspace' )
 #keycache.set_alias('default1x2')
 #keycache.set_pass('default1x2')
 
-keycache.set( 'coinspace' , {'un':'megauser', 'pw':'learnforever'}   )
-blob = keycache.get( 'coinspace' )
+k.add( 'coinspace' , {'un':'megauser', 'pw':'learnforever'}   )
+blob = k.get( 'coinspace' )
 print( blob )
 
-l=3
-keycache.set( 'mongo' , {'kun':'megauser', 'kpw':'learnforever'}   )
-blob = keycache.get( 'mongo' )
-
-
-d=4
-keycache.set_alias('test1')
-keycache.set_pass('test1')
-
-keycache.set( 'mongo' , {'kun':'megauser' ,'kpw':'learnforever'}   )
-blob = keycache.get( 'mongo' )
-
-
-#   signalmesh.run()   #
-#  signalmesh.nodes()  #
