@@ -1,7 +1,7 @@
 ## Keycache
 Keycache is an AES encrypted key:value store for your sensitive credentials. It can be used for database passwords, API-keys, private certificates or anything you don't want floating around on your filesystem. The module works as both static singleton and class instance for multiple simultaneous stores.
 ```bash    
-pip install git+git://github.com/psytron/keycache.git#egg=keycache
+pip install keycache
 ```
 
 
