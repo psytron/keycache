@@ -8,7 +8,6 @@ pip install keycache
 <b>Basic Usage: </b> This example uses automatic defaults for all parameters. It generates an encryption key derived from a hardware identifier, a default path for blobs ( ./blobs/ ), and default name for current blob ( default )
 ```python
 from keycache import Keycache
-
 k1 = Keycache()
 k1.add('some_namespace', { 'key1':'val1' , 'key2':'val2'} )
 k1.save()
